@@ -1,0 +1,23 @@
+
+<div class="container">
+    <table class="table table-striped" style="text-align: center;">
+        <thead>
+            <tr>
+                <th>Order Id</th>
+                <th>Item ordered</th>
+                <th>Shipping Address</th>
+                <th>Order Date</th>
+                <th>Shipped Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders">
+                <td>{{ order.orderId }}</td>
+                <td>{{ order.itemRequested | titlecase}} <br> <span>Qty: {{ order.qty }}</span></td>
+                <td>{{ order.shippingAddress | titlecase}} <br> {{ order.phnNo }}</td>
+                <td>{{ order.orderDate | slice:0:11 }}</td>
+                <td><b>{{ order.isRejectedByAdmin == 1 ? (order.shippedDate | slice:0:11) : "Rejected" }}</b></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

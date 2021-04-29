@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand">
+    <a class="navbar-brand"><span id="brand-color">Perpendicular<br>Shop</span></a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item">
+        <a href="#" class="nav-link">Home </a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
+      </li>
+      <li class="nav-item" *ngIf="showVendorBoard">
+        <a href="/vendor" class="nav-link" routerLink="vendor">Vendor Board</a>
+      </li>
+      <li class="nav-item"  *ngIf="showEmployeeBoard">
+        <a href="/employee" class="nav-link" routerLink="employee">Employee</a>
+      </li>
+    </ul>
+  
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a href="/signup" class="nav-link" routerLink="signup">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+  
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href="#" class="nav-link">Hey {{ username | titlecase}}<br>
+          <span *ngIf="showEmployeeBoard">- the Dedicated Employee </span>
+          <span *ngIf="showVendorBoard">- the Vendor Boy</span>
+          <span *ngIf="showAdminBoard">- the Cool Admin </span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">LogOut</a>
+      </li>
+    </ul>
+  </nav>  
